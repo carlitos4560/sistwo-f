@@ -1,15 +1,73 @@
-import { Component, OnInit } from '@angular/core';
+import {
+    Component, Input,
+    OnInit, OnDestroy, OnChanges, SimpleChanges,
+    ViewChild, ViewContainerRef, 
+    ComponentFactoryResolver, ComponentRef 
+} from '@angular/core';
+
+import { PlatoComponent } from '../templates/admin/plato/plato.component';
+import { MenuComponent } from '../templates/admin/menu/menu.component';
+import { PolloComponent } from '../templates/admin/pollo/pollo.component';
 
 @Component({
-  selector: 'four',
-  templateUrl: './four.component.html',
-  styleUrls: ['./four.component.sass']
+selector: 'four',
+templateUrl: './four.component.html',
+styleUrls: ['./four.component.sass']
 })
-export class FourComponent implements OnInit {
+export class FourComponent implements OnInit, OnDestroy, OnChanges {
+    
+    @ViewChild('container', { read: ViewContainerRef })
+    container: ViewContainerRef;
 
-  constructor() { }
+    @Input()
+    type: number;
 
-  ngOnInit() {
-  }
+    private views = {
+        1: MenuComponent,
+        2: PlatoComponent,
+        3: PolloComponent
+    };
+
+    private componentRef: ComponentRef<{}>;
+
+    constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+
+    getComponentType(view: number) {
+        let type = this.views[view];
+        return type || MenuComponent;
+    }
+
+    reDraw() {
+        // clear the previus content
+        this.container.clear();
+        if (this.type) {
+            let componentType = this.getComponentType(this.type);
+            
+            // note: componentType must be declared within
+            // module.entryComponents
+            let factory = this.componentFactoryResolver.resolveComponentFactory(componentType);
+            this.componentRef = this.container.createComponent(factory);
+
+            // set component context
+            //let instance = this.componentRef.instance;
+            // instance.context = this.context;
+        }
+    }
+
+    ngOnInit() {
+        this.reDraw();
+    }
+
+    ngOnDestroy() {
+        if (this.componentRef) {
+            this.componentRef.destroy();
+            this.componentRef = null;
+        }
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        this.type = changes.type.currentValue;
+        this.ngOnInit();
+    }
 
 }

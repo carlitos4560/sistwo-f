@@ -1,0 +1,38 @@
+<div class="">
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> #</mat-header-cell>
+      <mat-cell *matCellDef="let plato">{{ plato.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let plato">{{ plato.nombre }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="porcion">
+      <mat-header-cell *matHeaderCellDef> Porcion </mat-header-cell>
+      <mat-cell *matCellDef="let plato">{{ plato.porcion }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="precio">
+      <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+      <mat-cell *matCellDef="let plato">{{ plato.precio }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <mat-header-cell *matHeaderCellDef> Descripcion </mat-header-cell>
+      <mat-cell *matCellDef="let plato">{{ plato.descripcion }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="imagen">
+      <mat-header-cell *matHeaderCellDef> Imagen </mat-header-cell>
+      <mat-cell *matCellDef="let plato">imagen</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+</div>

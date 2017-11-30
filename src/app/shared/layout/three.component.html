@@ -1,3 +1,9 @@
-<p>
-  three works!
-</p>
+<mat-menu #pollo="matMenu">
+  <button mat-menu-item (click)="action(2)"> Registrar Plato </button>
+  <button mat-menu-item (click)="action(3)"> Registrar Cantidad </button>
+  <button mat-menu-item (click)="action(1)"> Menu </button>
+</mat-menu>
+
+<button mat-raised-button color="primary" [matMenuTriggerFor]="pollo">
+  Pollo
+</button>

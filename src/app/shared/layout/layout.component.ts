@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'layout',
-  templateUrl: './layout.component.html',
-  styleUrls: ['./layout.component.sass']
+    selector: 'layout',
+    templateUrl: './layout.component.html',
+    styleUrls: ['./layout.component.sass']
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+    view: number = 1;
 
-  ngOnInit() {
-  }
+    constructor() { }
 
+    ngOnInit() {
+    }
+
+    updateView(value: number) {
+        this.view = value;
+    }
+
+    receiveView($event) {
+        this.updateView($event);
+    }
 }

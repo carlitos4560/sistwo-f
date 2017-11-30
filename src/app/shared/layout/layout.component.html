@@ -10,12 +10,12 @@
         <two></two>
       </div>
       <div class="six">
-        <three></three>
+        <three (viewEvent)="receiveView($event)"></three>
       </div>
     </div>
     <div class="four">
       <div class="seven">
-        <four></four>
+        <four *ngIf="type!=1" [type]='view'></four>
       </div>
       <div class="eight">
         <five></five>

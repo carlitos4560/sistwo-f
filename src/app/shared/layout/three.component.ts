@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'three',
-  templateUrl: './three.component.html',
-  styleUrls: ['./three.component.sass']
+    selector: 'three',
+    templateUrl: './three.component.html',
+    styleUrls: ['./three.component.sass']
 })
 export class ThreeComponent implements OnInit {
 
-  constructor() { }
+    @Output()
+    viewEvent = new EventEmitter<number>();
 
-  ngOnInit() {
-  }
+    constructor() { }
+
+    ngOnInit() {
+    }
+
+    action(value: number) {
+        this.viewEvent.emit(value);
+    }
 
 }
