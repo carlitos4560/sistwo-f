@@ -7,17 +7,19 @@ import { Plato } from '../models/plato';
 @Injectable()
 export class PlatoService {
 
-    platosUrl: string = 'http://sistwo-b.com/api/platos';
-    saveUrl: string = 'http://sistwo-b.com/api/platos';
+    private URL: string = 'http://sistwo-b.com/api/platos';
 
     constructor(private http: HttpClient) { }
 
     getPlatos(): Observable<Plato[]> {
-        return this.http.get<Plato[]>(this.platosUrl);
+        return this.http.get<Plato[]>(this.URL);
     }
 
     addPlato(plato: any): Observable<any> {
-        return this.http.post(this.saveUrl, plato);
+        return this.http.post(this.URL, plato);
     }
 
+    destroyPlato(plato_id: number): Observable<any> {
+        return this.http.delete(`${this.URL}/${plato_id}`);
+    }
 }

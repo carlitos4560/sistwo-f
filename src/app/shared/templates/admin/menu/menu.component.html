@@ -1,10 +1,10 @@
 <div class="">
   <mat-table #table [dataSource]="dataSource">
 
-    <ng-container matColumnDef="id">
+    <!--<ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> #</mat-header-cell>
       <mat-cell *matCellDef="let plato">{{ plato.id }}</mat-cell>
-    </ng-container>
+    </ng-container>-->
 
     <ng-container matColumnDef="nombre">
       <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
@@ -26,9 +26,21 @@
       <mat-cell *matCellDef="let plato">{{ plato.descripcion }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="imagen">
+    <!--<ng-container matColumnDef="imagen">
       <mat-header-cell *matHeaderCellDef> Imagen </mat-header-cell>
       <mat-cell *matCellDef="let plato">imagen</mat-cell>
+    </ng-container>-->
+
+    <ng-container matColumnDef="opciones">
+      <mat-header-cell *matHeaderCellDef>  Opciones</mat-header-cell>
+      <mat-cell *matCellDef="let plato">
+        <button (click)="edit(plato.id)" mat-mini-fab color="primary">
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+        <button (click)="destroy(plato.id)" mat-mini-fab color="primary">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
