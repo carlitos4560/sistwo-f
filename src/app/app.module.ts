@@ -25,6 +25,7 @@ import { CajeroComponent } from './cajero/cajero.component';
 import { AdminComponent } from './admin/admin.component';
 
 import { PlatoService } from './shared/services/plato.service';
+import { PolloService } from './shared/services/pollo.service';
 
 import { PlatoComponent } from './shared/templates/admin/plato/plato.component';
 import { MenuComponent } from './shared/templates/admin/menu/menu.component';
@@ -65,7 +66,7 @@ import { PolloComponent } from './shared/templates/admin/pollo/pollo.component';
         MatFormFieldModule,
         MatInputModule
     ],
-    providers: [PlatoService],
+    providers: [PlatoService, PolloService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
