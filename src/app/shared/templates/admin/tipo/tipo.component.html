@@ -1,0 +1,49 @@
+<div class="">
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let tipo">{{ tipo.nombre }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="imagen">
+      <mat-header-cell *matHeaderCellDef> Imagen </mat-header-cell>
+      <mat-cell *matCellDef="let tipo">
+        <img width="300" src="{{tipo.imagen}}" alt="">
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="opciones">
+      <mat-header-cell *matHeaderCellDef>  Opciones</mat-header-cell>
+      <mat-cell *matCellDef="let tipo">
+        <button (click)="editTipo(tipo.id)" mat-mini-fab color="primary">
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+        <button (click)="destroyTipo(tipo.id)" mat-mini-fab color="primary">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+</div>
+
+<form [formGroup]="form" novalidate (ngSubmit)="addTipo(form.value)">
+  <mat-form-field>
+    <input matInput type="texto"
+           placeholder="Nombre"
+           formControlName="nombre">
+  </mat-form-field>
+
+  <input type="file" id="imagen" (change)="onFileChange($event)" #fileInput>
+  <button type="button" (click)="clearFile()">clear file</button>
+
+  <button mat-raised-button
+          color="primary"
+          [disabled]="!form.valid">
+    agregar tipo
+  </button>
+</form>

@@ -22,4 +22,8 @@ export class PlatoService {
     destroyPlato(plato_id: number): Observable<any> {
         return this.http.delete(`${this.URL}/${plato_id}`);
     }
+
+    editPlato(plato_id: number): Observable<Plato> {
+        return this.http.get<Plato>(`${this.URL}/${plato_id}`);
+    }
 }

@@ -34,7 +34,7 @@
     <ng-container matColumnDef="opciones">
       <mat-header-cell *matHeaderCellDef>  Opciones</mat-header-cell>
       <mat-cell *matCellDef="let plato">
-        <button (click)="edit(plato.id)" mat-mini-fab color="primary">
+        <button (click)="editPlato(plato.id)" mat-mini-fab color="primary">
           <mat-icon>mode_edit</mat-icon>
         </button>
         <button (click)="destroy(plato.id)" mat-mini-fab color="primary">

@@ -7,3 +7,13 @@
 <button mat-raised-button color="primary" [matMenuTriggerFor]="pollo">
   Pollo
 </button>
+
+<mat-menu #refresco="matMenu">
+  <button mat-menu-item (click)="action(6)">Categorias Refresco</button>
+  <button mat-menu-item (click)="action(7)">Tipo Refresco</button>
+  <button mat-menu-item (click)="action(4)">Registrar Refresco</button>
+  <button mat-menu-item (click)="action(5)">Menu Refresco</button>
+</mat-menu>
+<button mat-raised-button color="primary" [matMenuTriggerFor]="refresco">
+  Refresco
+</button>

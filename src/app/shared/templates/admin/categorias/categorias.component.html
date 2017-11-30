@@ -1,0 +1,50 @@
+<div class="">
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let categoria">{{ categoria.nombre }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="contenido">
+      <mat-header-cell *matHeaderCellDef> Contenido </mat-header-cell>
+      <mat-cell *matCellDef="let categoria">{{ categoria.contenido }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="opciones">
+      <mat-header-cell *matHeaderCellDef>  Opciones</mat-header-cell>
+      <mat-cell *matCellDef="let categoria">
+        <button (click)="editCategoria(categoria.id)" mat-mini-fab color="primary">
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+        <button (click)="destroyCategoria(categoria.id)" mat-mini-fab color="primary">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+</div>
+
+<form [formGroup]="form" novalidate (ngSubmit)="addCategoria(form.value)">
+  <mat-form-field>
+    <input matInput type="texto"
+           placeholder="Nombre"
+           formControlName="nombre">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text"
+           placeholder="Contenido"
+           formControlName="contenido">
+  </mat-form-field>
+
+  <button mat-raised-button
+          color="primary"
+          [disabled]="!form.valid">
+    agregar categoria
+  </button>
+</form>

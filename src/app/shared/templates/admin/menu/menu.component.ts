@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
 
 import { Plato } from '../../../models/plato';
 import { PlatoService } from '../../../services/plato.service';
+import { BetweenService } from '../../../services/between.service';
 
 @Component({
     selector: 'menu',
@@ -12,20 +13,20 @@ import { PlatoService } from '../../../services/plato.service';
 })
 export class MenuComponent implements OnInit {
 
-    //platos: Observable<Plato[]>; 
-
+    vistaEdit: number;
     dataSource = new PlatoDataSource(this.platoService);
     displayedColumns = ['nombre', 'porcion', 'precio', 'descripcion', 'opciones'];
 
-    constructor(private platoService: PlatoService) { }
+    constructor(
+        private platoService: PlatoService,
+        private bs: BetweenService
+    ) {}
 
     ngOnInit() {
-        //this.platos = this.platoService.getPlatos(); 
-        //this.platos = this.platoService.getPlatos().subscribe(data => { this.platos = data }); 
-        //this.dataSource = this.platos;
+        //this.bs.currentVista.subscribe(vistaEdit => this.vista = vistaEdit);
     }
 
-    edit(id) {
+    editPlato(id) {
         console.log(id);
     }
 

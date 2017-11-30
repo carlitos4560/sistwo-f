@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -26,10 +27,18 @@ import { AdminComponent } from './admin/admin.component';
 
 import { PlatoService } from './shared/services/plato.service';
 import { PolloService } from './shared/services/pollo.service';
+import { BetweenService } from './shared/services/between.service';
+import { RefrescoService } from './shared/services/refresco.service';
+import { CategoriaRefrescoService } from './shared/services/categoria-refresco.service';
+import { TipoRefrescoService } from './shared/services/tipo-refresco.service';
 
 import { PlatoComponent } from './shared/templates/admin/plato/plato.component';
 import { MenuComponent } from './shared/templates/admin/menu/menu.component';
 import { PolloComponent } from './shared/templates/admin/pollo/pollo.component';
+import { RefrescoComponent } from './shared/templates/admin/refresco/refresco.component';
+import { RefrescomenuComponent } from './shared/templates/admin/refrescomenu/refrescomenu.component';
+import { CategoriasComponent } from './shared/templates/admin/categorias/categorias.component';
+import { TipoComponent } from './shared/templates/admin/tipo/tipo.component';
 
 
 @NgModule({
@@ -45,12 +54,20 @@ import { PolloComponent } from './shared/templates/admin/pollo/pollo.component';
         AdminComponent,
         PlatoComponent,
         MenuComponent,
-        PolloComponent
+        PolloComponent,
+        RefrescoComponent,
+        RefrescomenuComponent,
+        CategoriasComponent,
+        TipoComponent
     ],
     entryComponents: [
         MenuComponent,
         PlatoComponent,
-        PolloComponent
+        PolloComponent,
+        RefrescoComponent,
+        RefrescomenuComponent,
+        CategoriasComponent,
+        TipoComponent
     ],
     imports: [
         routes,
@@ -64,9 +81,17 @@ import { PolloComponent } from './shared/templates/admin/pollo/pollo.component';
         MatIconModule,
         MatTableModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatSelectModule
     ],
-    providers: [PlatoService, PolloService],
+    providers: [
+        PlatoService,
+        PolloService,
+        BetweenService,
+        RefrescoService,
+        CategoriaRefrescoService,
+        TipoRefrescoService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

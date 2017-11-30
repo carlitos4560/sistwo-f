@@ -1,0 +1,41 @@
+<form [formGroup]="form" novalidate (ngSubmit)="addRefresco(form.value)">
+  <mat-form-field>
+    <mat-select placeholder="Categorias Refrescos"
+                formControlName="categoria_refresco_id">
+       <mat-option *ngFor="let categoria of categorias" 
+                   [value]="categoria.id">
+        {{categoria.nombre}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Tipos Refrescos"
+                formControlName="tipo_refresco_id">
+       <mat-option *ngFor="let tipo of tipos" 
+                   [value]="tipo.id">
+        {{tipo.nombre}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="texto"
+           placeholder="Precio Refresco Unidad"
+           formControlName="precio">
+    <span matPrefix>$&nbsp;</span>
+    <span matSuffix>.00</span>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number"
+           placeholder="Cantidad Refrescos Unidades"
+           formControlName="cantidad_unidades">
+  </mat-form-field>
+
+  <button mat-raised-button
+          color="primary"
+          [disabled]="!form.valid">
+    agregar refresco
+  </button>
+</form>

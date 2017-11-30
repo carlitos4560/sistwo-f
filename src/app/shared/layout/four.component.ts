@@ -8,6 +8,10 @@ import {
 import { PlatoComponent } from '../templates/admin/plato/plato.component';
 import { MenuComponent } from '../templates/admin/menu/menu.component';
 import { PolloComponent } from '../templates/admin/pollo/pollo.component';
+import { RefrescoComponent } from '../templates/admin/refresco/refresco.component';
+import { RefrescomenuComponent } from '../templates/admin/refrescomenu/refrescomenu.component';
+import { CategoriasComponent } from '../templates/admin/categorias/categorias.component';
+import { TipoComponent } from '../templates/admin/tipo/tipo.component';
 
 @Component({
 selector: 'four',
@@ -25,7 +29,11 @@ export class FourComponent implements OnInit, OnDestroy, OnChanges {
     private views = {
         1: MenuComponent,
         2: PlatoComponent,
-        3: PolloComponent
+        3: PolloComponent,
+        4: RefrescoComponent,
+        5: RefrescomenuComponent,
+        6: CategoriasComponent,
+        7: TipoComponent
     };
 
     private componentRef: ComponentRef<{}>;
@@ -69,5 +77,4 @@ export class FourComponent implements OnInit, OnDestroy, OnChanges {
         this.type = changes.type.currentValue;
         this.ngOnInit();
     }
-
 }

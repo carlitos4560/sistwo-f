@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BetweenService } from '../services/between.service';
 
 @Component({
     selector: 'layout',
@@ -8,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class LayoutComponent implements OnInit {
 
     view: number = 1;
+    // para la vista de editar un plato
+    vistaEdit: number;
 
-    constructor() { }
+    constructor(private bs: BetweenService) { }
 
     ngOnInit() {
+        //this.bs.currentVista.subscribe(vistaEdit => this.vista = vistaEdit);
     }
 
     updateView(value: number) {

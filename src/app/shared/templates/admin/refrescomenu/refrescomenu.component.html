@@ -1,0 +1,41 @@
+<div class="">
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let refresco">{{ refresco.nombre }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="precio">
+      <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
+      <mat-cell *matCellDef="let refresco">{{ refresco.precio }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cantidad">
+      <mat-header-cell *matHeaderCellDef> Cantidad/Unidades </mat-header-cell>
+      <mat-cell *matCellDef="let refresco">{{ refresco.cantidad }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="categoria">
+      <mat-header-cell *matHeaderCellDef> Categoria </mat-header-cell>
+      <mat-cell *matCellDef="let refresco">{{ refresco.categoria }}</mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="opciones">
+      <mat-header-cell *matHeaderCellDef>  Opciones</mat-header-cell>
+      <mat-cell *matCellDef="let refresco">
+        <button (click)="editRefresco(refresco.id)" mat-mini-fab color="primary">
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+        <button (click)="destroyRefresco(refresco.id)" mat-mini-fab color="primary">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+</div>
