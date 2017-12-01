@@ -13,6 +13,9 @@ import { RefrescomenuComponent } from '../templates/admin/refrescomenu/refrescom
 import { CategoriasComponent } from '../templates/admin/categorias/categorias.component';
 import { TipoComponent } from '../templates/admin/tipo/tipo.component';
 
+import { MenuPlatosComponent } from '../templates/cajero/menu-platos/menu-platos.component';
+import { MenuRefrescosComponent } from '../templates/cajero/menu-refrescos/menu-refrescos.component';
+
 @Component({
 selector: 'four',
 templateUrl: './four.component.html',
@@ -33,7 +36,9 @@ export class FourComponent implements OnInit, OnDestroy, OnChanges {
         4: RefrescoComponent,
         5: RefrescomenuComponent,
         6: CategoriasComponent,
-        7: TipoComponent
+        7: TipoComponent,
+        8: MenuPlatosComponent,
+        9: MenuRefrescosComponent
     };
 
     private componentRef: ComponentRef<{}>;
