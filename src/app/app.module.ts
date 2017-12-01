@@ -3,33 +3,39 @@ import { NgModule } from '@angular/core';
 import { routes } from './app.routes';
 
 import { AppComponent } from './app.component';
-import { LayoutComponent } from './shared/layout/layout.component';
-import { OneComponent } from './shared/layout/one.component';
-import { TwoComponent } from './shared/layout/two.component';
-import { ThreeComponent } from './shared/layout/three.component';
-import { FourComponent } from './shared/layout/four.component';
-import { FiveComponent } from './shared/layout/five.component';
+import { LayoutCajeroComponent } from './shared/layout-cajero/layout.component';
+import { LayoutAdminComponent } from './shared/layout-admin/layout.component';
 import { CajeroComponent } from './cajero/cajero.component';
 import { AdminComponent } from './admin/admin.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { OrderlineComponent } from './orderline/orderline.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { OrderComponent } from './order/order.component';
+import { OrderItemComponent } from './order-item/order-item.component';
+import { MessageService } from './message.service';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
-    OneComponent,
-    TwoComponent,
-    ThreeComponent,
-    FourComponent,
-    FiveComponent,
+    LayoutCajeroComponent,
+    LayoutAdminComponent,
     CajeroComponent,
-    AdminComponent
+    AdminComponent,
+    OrderDetailComponent,
+    OrderlineComponent,
+    OrderComponent,
+    OrderItemComponent
   ],
   imports: [
     routes,
-    BrowserModule
+    BrowserModule,
+    MatGridListModule,
+    MatButtonModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

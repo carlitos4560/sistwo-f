@@ -1,0 +1,7 @@
+<div class="order-component">
+  <ul>
+    <li *ngFor="let pedido of orderlist">
+      <f-order-item num="{{pedido.getNumeroPedido()}}"></f-order-item>
+    </li>
+  </ul>
+</div>

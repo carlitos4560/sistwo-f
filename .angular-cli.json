@@ -19,6 +19,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "f",
       "styles": [
+        "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+        "assets/static/css/materialize.css",
         "styles.sass"
       ],
       "scripts": [],
