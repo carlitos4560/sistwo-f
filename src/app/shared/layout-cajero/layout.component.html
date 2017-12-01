@@ -6,19 +6,19 @@
     <div class="three">
       <div class="five">
         <div>
-          two
+          <two></two>
         </div>
       </div>
       <div class="six">
         <div>
-          three
+          <three-cajero (viewEvent)="receiveView($event)"></three-cajero>
         </div>
       </div>
     </div>
     <div class="four">
       <div class="seven">
         <div>
-          four
+          <four-cajero *ngIf="type!=1" [type]='view'></four-cajero>
         </div>
       </div>
       <div class="eight">

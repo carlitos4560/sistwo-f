@@ -1,9 +1,18 @@
+$orange_opacity_color: rgba(242, 101, 34, .5)
+$red_opacity_color: rgba(255, 0, 0, .2)
+
 .layout-container
     display: flex
     min-height: 100vh
+    background-image: url(/assets/static/images/background.svg)
+    background-attachment: fixed
+    background-position: center center
+    background-repeat: no-repeat
+    background-size: cover
 
 .one
-    width: 250px
+    background-color: $orange_opacity_color
+    width: 120px
     flex-shrink: 0
 
 .two
@@ -32,4 +41,4 @@
 
 .eight
     flex-shrink: 0
-    width: 150px
+    width: 300px

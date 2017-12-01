@@ -27,7 +27,9 @@ import { LayoutComponent } from './shared/layout/layout.component';
 import { OneComponent } from './shared/layout/one.component';
 import { TwoComponent } from './shared/layout/two.component';
 import { ThreeComponent } from './shared/layout/three.component';
+import { ThreeCajeroComponent } from './shared/layout-cajero/three.component';
 import { FourComponent } from './shared/layout/four.component';
+import { FourCajeroComponent } from './shared/layout-cajero/four.component';
 import { FiveComponent } from './shared/layout/five.component';
 import { CajeroComponent } from './cajero/cajero.component';
 import { AdminComponent } from './admin/admin.component';
@@ -65,7 +67,9 @@ import { EditRefrescoComponent } from './shared/templates/admin/edit-refresco/ed
         OneComponent,
         TwoComponent,
         ThreeComponent,
+        ThreeCajeroComponent,
         FourComponent,
+        FourCajeroComponent,
         FiveComponent,
         CajeroComponent,
         AdminComponent,
