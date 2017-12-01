@@ -5,6 +5,7 @@ import { CajeroComponent } from './cajero/cajero.component';
 import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
+    { path: '', redirectTo: '/cajero', pathMatch: 'full'}
     {path: 'cajero', component: CajeroComponent},
     {path: 'admin', component: AdminComponent}
 ];

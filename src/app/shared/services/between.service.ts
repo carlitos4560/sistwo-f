@@ -9,8 +9,8 @@ export class BetweenService {
 
     constructor() { }
 
-    changeView(id) {
-        this.vista.next(id);
+    changeView(obj) {
+        this.vista.next(obj);
     }
 
     getVista() {

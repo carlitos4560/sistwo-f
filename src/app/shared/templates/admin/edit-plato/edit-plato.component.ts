@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { Plato } from '../../../models/plato';
 import { PlatoService } from '../../../services/plato.service';
+import { BetweenService } from '../../../services/between.service';
 
 @Component({
     selector: 'f-edit-plato',
@@ -11,6 +12,17 @@ import { PlatoService } from '../../../services/plato.service';
     styleUrls: ['./edit-plato.component.sass']
 })
 export class EditPlatoComponent implements OnInit {
+
+    model: any;
+    //plato: Observable<any>;
+    vistaEdit: any;
+
+    plato_id: any;
+    plato_nombre: any;
+    plato_porcion: any;
+    plato_precio: any;
+    plato_descripcion: any;
+    plato_imagen: any;
 
     form: FormGroup;
     @ViewChild('fileInput') fileInput: ElementRef;
@@ -36,12 +48,37 @@ export class EditPlatoComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private platoService: PlatoService,
-        private router: Router
+        private router: Router,
+        private bs: BetweenService
     ) {
-        this.createForm();
+        console.log("desde el constructor ");
     }
 
     ngOnInit() {
+        this.bs.currentVista.subscribe(vistaEdit => this.vistaEdit = vistaEdit);
+        if (this.vistaEdit.model != undefined) {
+            console.log("creando form con modelo "+this.vistaEdit.model);
+            this.model = this.vistaEdit.model;
+            this.platoService.get(this.model).subscribe(
+                (val) => {
+                    console.log("GET call successful value returned in body", val);
+                    this.plato_id = val.id;
+                    this.plato_nombre = val.nombre;
+                    this.plato_porcion = val.porcion;
+                    this.plato_precio = val.precio;
+                    this.plato_descripcion = val.descripcion;
+                    this.plato_imagen = val.imagen;
+                },
+                response => {
+                    console.log("GET call in error", response);
+                },
+                () => {
+                    console.log("The GET observable is now completed.");
+                }
+            );
+            console.log("desde el OnINIT ");
+            this.createForm();
+        }
     }
 
     onFileChange(event) {
@@ -83,7 +120,6 @@ export class EditPlatoComponent implements OnInit {
                     Validators.maxLength(255)
                 ])
             ],
-            imagen: [null, Validators.compose([Validators.required])],
         });
     }
 
@@ -126,6 +162,19 @@ export class EditPlatoComponent implements OnInit {
     }
 
     updatePlato(plato: Plato) {
+        plato.id = this.plato_id;
+        this.platoService.update(plato).subscribe(
+            (val) => {
+                console.log("UPDATE call successful value returned in body",val);
+                this.router.navigate(['/']);
+            },
+            response => {
+                console.log("UPDATE call in error", response);
+            },
+            () => {
+                console.log("The UPDATE observable is now completed.");
+            }
+        );
         console.log(plato);
     }
 }

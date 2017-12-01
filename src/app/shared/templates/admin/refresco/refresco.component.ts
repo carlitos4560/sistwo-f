@@ -100,7 +100,7 @@ export class RefrescoComponent implements OnInit {
         this.refrescoService.add(refresco).subscribe(
             (val) => {
                 console.log("POST call successful value returned in body",val);
-                this.router.navigate(['/admin']);
+                this.router.navigate(['/']);
             },
             response => {
                 console.log("POST call in error", response);

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
+import { Router } from '@angular/router';
 
 import { Refresco } from '../../../models/refresco';
 import { RefrescoService } from '../../../services/refresco.service';
@@ -25,7 +26,8 @@ export class RefrescomenuComponent implements OnInit {
 
     constructor(
         private refrescoService: RefrescoService,
-        private bs: BetweenService
+        private bs: BetweenService,
+        private router: Router
     ) {}
 
     ngOnInit() {
@@ -42,6 +44,7 @@ export class RefrescomenuComponent implements OnInit {
         this.refrescoService.destroy(id).subscribe(
             (val) => {
                 console.log("DELETE call successful value returned in body", val);
+                this.router.navigate(['/']);
             },
             response => {
                 console.log("DELETE call in error", response);

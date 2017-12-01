@@ -108,7 +108,7 @@ export class PlatoComponent implements OnInit {
         this.platoService.addPlato(plato).subscribe(
             (val) => {
                 console.log("POST call successful value returned in body",val);
-                this.router.navigate(['/admin']);
+                this.router.navigate(['/']);
             },
             response => {
                 console.log("POST call in error", response);

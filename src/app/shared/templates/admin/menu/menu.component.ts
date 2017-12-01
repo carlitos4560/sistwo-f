@@ -1,8 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, DoCheck } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/collections';
-
-import { LayoutComponent } from '../../../layout/layout.component';
+import { Router } from '@angular/router';
 
 import { Plato } from '../../../models/plato';
 import { PlatoService } from '../../../services/plato.service';
@@ -16,6 +15,7 @@ import { BetweenService } from '../../../services/between.service';
 export class MenuComponent implements OnInit {
 
     vistaEdit: any;
+
     dataSource = new PlatoDataSource(this.platoService);
     displayedColumns = ['nombre', 'porcion', 'precio', 'descripcion', 'opciones'];
 
@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit {
     editPlato(id) {
         console.log(id);
         //let v = {vista:8, platoid:id};
-        this.bs.changeView(8);
+        this.bs.changeView({view:8,model:id});
         //console.log(v);
     }
 
@@ -40,6 +40,7 @@ export class MenuComponent implements OnInit {
         this.platoService.destroyPlato(id).subscribe(
             (val) => {
                 console.log("DELETE call successful value returned in body", val);
+                this.router.navigate(['/']);
             },
             response => {
                 console.log("DELETE call in error", response);

@@ -55,7 +55,7 @@ export class PolloComponent implements OnInit {
         this.polloService.addPollo(pollo).subscribe(
             (val) => {
                 console.log("POST call successful value returned in body",val);
-                this.router.navigate(['/admin']);
+                this.router.navigate(['/']);
             },
             response => {
                 console.log("POST call in error", response);

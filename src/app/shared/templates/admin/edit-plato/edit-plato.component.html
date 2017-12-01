@@ -2,13 +2,15 @@
   <mat-form-field>
     <input matInput type="text"
            placeholder="Nombre"
-           formControlName="nombre">
+           formControlName="nombre"
+           [(ngModel)]="plato_nombre">
   </mat-form-field>
 
   <mat-form-field>
     <input matInput type="text"
            placeholder="Precio"
-           formControlName="precio">
+           formControlName="precio"
+           [(ngModel)]="plato_precio">
     <span matPrefix>$&nbsp;</span>
     <span matSuffix>.00</span>
   </mat-form-field>
@@ -16,7 +18,8 @@
   <mat-form-field>
     <input matInput type="number"
            placeholder="Porcion"
-           formControlName="porcion">
+           formControlName="porcion"
+           [(ngModel)]="plato_porcion">
   </mat-form-field>
 
   <mat-form-field hintLabel="Max 255 characters">
@@ -26,6 +29,7 @@
               matAutosizeMinRows="1"
               matAutosizeMaxRows="5"
               #input maxlength="255"
+              [(ngModel)]="plato_descripcion"
               formControlName="descripcion"></textarea>
     <mat-hint align="end">{{input.value?.length || 0}}/255</mat-hint>
   </mat-form-field>
@@ -36,6 +40,6 @@
   <button mat-raised-button
           color="primary"
           [disabled]="!form.valid">
-    agregar plato
+    actualizar plato
   </button>
 </form>

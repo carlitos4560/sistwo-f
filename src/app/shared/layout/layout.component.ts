@@ -14,7 +14,7 @@ export class LayoutComponent implements OnInit, DoCheck, OnDestroy {
     vistaEdit: any;
 
     constructor(private bs: BetweenService) {
-        this.bs.currentVista.subscribe(vistaEdit => this.view = vistaEdit);
+        this.bs.currentVista.subscribe(vistaEdit => this.vistaEdit = vistaEdit);
     }
 
     ngOnInit() {
@@ -26,6 +26,15 @@ export class LayoutComponent implements OnInit, DoCheck, OnDestroy {
         //    console.log("cambio en layout component ");
         //    this.updateView(this.vistaEdit.vista);
         //}
+        console.log("layout docheck");
+        console.log(this.vistaEdit);
+        console.log("model abajo");
+        console.log(this.vistaEdit.model);
+        if (this.vistaEdit.model != undefined && this.vistaEdit.view != undefined) {
+            console.log("model abajo no es undefined");
+            console.log(this.vistaEdit.model);
+            this.updateView(this.vistaEdit.view);
+        }
     }
 
     ngOnDestroy() {
@@ -33,7 +42,7 @@ export class LayoutComponent implements OnInit, DoCheck, OnDestroy {
         //this.bs.currentVista.unsubscribe();
     }
 
-    public updateView(value: number) {
+    updateView(value: number) {
         this.view = value;
     }
 
