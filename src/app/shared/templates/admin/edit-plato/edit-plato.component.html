@@ -1,0 +1,41 @@
+<form [formGroup]="form" novalidate (ngSubmit)="updatePlato(form.value)">
+  <mat-form-field>
+    <input matInput type="text"
+           placeholder="Nombre"
+           formControlName="nombre">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text"
+           placeholder="Precio"
+           formControlName="precio">
+    <span matPrefix>$&nbsp;</span>
+    <span matSuffix>.00</span>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number"
+           placeholder="Porcion"
+           formControlName="porcion">
+  </mat-form-field>
+
+  <mat-form-field hintLabel="Max 255 characters">
+    <textarea matInput
+              placeholder="Descripcion"
+              matTextareaAutosize
+              matAutosizeMinRows="1"
+              matAutosizeMaxRows="5"
+              #input maxlength="255"
+              formControlName="descripcion"></textarea>
+    <mat-hint align="end">{{input.value?.length || 0}}/255</mat-hint>
+  </mat-form-field>
+
+  <input type="file" id="imagen" (change)="onFileChange($event)" #fileInput>
+  <button type="button" (click)="clearFile()">clear file</button>
+
+  <button mat-raised-button
+          color="primary"
+          [disabled]="!form.valid">
+    agregar plato
+  </button>
+</form>

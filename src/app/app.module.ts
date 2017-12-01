@@ -15,7 +15,13 @@ import {MatSelectModule} from '@angular/material/select';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+import { OrderDetailComponent } from './order-detail/order-detail.component';
+import { OrderlineComponent } from './orderline/orderline.component';
+import { OrderComponent } from './order/order.component';
+import { OrderItemComponent } from './order-item/order-item.component';
+
 import { AppComponent } from './app.component';
+import { LayoutCajeroComponent } from './shared/layout-cajero/layout.component';
 import { LayoutComponent } from './shared/layout/layout.component';
 import { OneComponent } from './shared/layout/one.component';
 import { TwoComponent } from './shared/layout/two.component';
@@ -31,6 +37,7 @@ import { BetweenService } from './shared/services/between.service';
 import { RefrescoService } from './shared/services/refresco.service';
 import { CategoriaRefrescoService } from './shared/services/categoria-refresco.service';
 import { TipoRefrescoService } from './shared/services/tipo-refresco.service';
+import { MessageService } from './shared/services/message.service';
 
 import { PlatoComponent } from './shared/templates/admin/plato/plato.component';
 import { MenuComponent } from './shared/templates/admin/menu/menu.component';
@@ -45,6 +52,7 @@ import { TipoComponent } from './shared/templates/admin/tipo/tipo.component';
     declarations: [
         AppComponent,
         LayoutComponent,
+        LayoutCajeroComponent,
         OneComponent,
         TwoComponent,
         ThreeComponent,
@@ -52,6 +60,10 @@ import { TipoComponent } from './shared/templates/admin/tipo/tipo.component';
         FiveComponent,
         CajeroComponent,
         AdminComponent,
+        OrderDetailComponent,
+        OrderlineComponent,
+        OrderComponent,
+        OrderItemComponent,
         PlatoComponent,
         MenuComponent,
         PolloComponent,
@@ -90,7 +102,8 @@ import { TipoComponent } from './shared/templates/admin/tipo/tipo.component';
         BetweenService,
         RefrescoService,
         CategoriaRefrescoService,
-        TipoRefrescoService
+        TipoRefrescoService,
+        MessageService
     ],
     bootstrap: [AppComponent]
 })

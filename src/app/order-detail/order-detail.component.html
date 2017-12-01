@@ -1,0 +1,39 @@
+<div class="order-detail-container">
+
+  <div class="order-detail-header">
+    <h3>Detalle</h3>
+  </div>
+
+  <div class="order-scroller">
+    <div class="order-detail">
+      <ul class="orderlines">
+        <li class="orderline" *ngFor="let orderline of orderlines" >
+          <f-orderline cant="{{orderline.getCantidad()}}"
+                       desc="{{orderline.getDescripcion()}}"
+                       detailID="{{orderline.getDetailID()}}"></f-orderline>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="order-detail-footer">
+    <div class="pay-action">
+      <button mat-button primary>Pagar</button>
+    </div>
+    <div class="order-summary">
+      <div class="row">
+        <div class="col s10 m9">
+          <div class="total">
+            BS: 0.0
+          </div>
+        </div>
+        <div class="col s2 m3">
+          <div class="trash">
+            <img (click)="eliminarPedido()" class="order-delete-button" src="/assets/static/images/trash.svg"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
