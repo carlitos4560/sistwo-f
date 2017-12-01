@@ -4,13 +4,17 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class BetweenService {
 
-    private vista = new BehaviorSubject<number>(6);
+    private vista = new BehaviorSubject<any>({});
     currentVista = this.vista.asObservable();
 
     constructor() { }
 
-    changeView(id: number) {
+    changeView(id) {
         this.vista.next(id);
+    }
+
+    getVista() {
+        this.currentVista;
     }
 
 }

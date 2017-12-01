@@ -39,12 +39,17 @@ import { RefrescoComponent } from './shared/templates/admin/refresco/refresco.co
 import { RefrescomenuComponent } from './shared/templates/admin/refrescomenu/refrescomenu.component';
 import { CategoriasComponent } from './shared/templates/admin/categorias/categorias.component';
 import { TipoComponent } from './shared/templates/admin/tipo/tipo.component';
+<<<<<<< Updated upstream
 import { MenuPlatosComponent } from './shared/templates/cajero/menu-platos/menu-platos.component';
 import { MenuRefrescosComponent } from './shared/templates/cajero/menu-refrescos/menu-refrescos.component';
 import { ListPlatosComponent } from './shared/templates/cajero/menu-platos/list-platos/list-platos.component';
 import { PlatocajeroComponent } from './shared/templates/cajero/menu-platos/list-platos/platocajero/platocajero.component';
 import { ListRefrescosComponent } from './shared/templates/cajero/menu-refrescos/list-refrescos/list-refrescos.component';
 import { RefrescocajeroComponent } from './shared/templates/cajero/menu-refrescos/list-refrescos/refrescocajero/refrescocajero.component';
+=======
+import { EditPlatoComponent } from './shared/templates/admin/edit-plato/edit-plato.component';
+import { EditRefrescoComponent } from './shared/templates/admin/edit-refresco/edit-refresco.component';
+>>>>>>> Stashed changes
 
 
 @NgModule({
@@ -65,12 +70,17 @@ import { RefrescocajeroComponent } from './shared/templates/cajero/menu-refresco
         RefrescomenuComponent,
         CategoriasComponent,
         TipoComponent,
+<<<<<<< Updated upstream
         MenuPlatosComponent,
         MenuRefrescosComponent,
         ListPlatosComponent,
         PlatocajeroComponent,
         ListRefrescosComponent,
         RefrescocajeroComponent
+=======
+        EditPlatoComponent,
+        EditRefrescoComponent
+>>>>>>> Stashed changes
     ],
     entryComponents: [
         MenuComponent,
@@ -80,8 +90,13 @@ import { RefrescocajeroComponent } from './shared/templates/cajero/menu-refresco
         RefrescomenuComponent,
         CategoriasComponent,
         TipoComponent,
+<<<<<<< Updated upstream
         MenuPlatosComponent,
         MenuRefrescosComponent
+=======
+        EditPlatoComponent,
+        EditRefrescoComponent
+>>>>>>> Stashed changes
     ],
     imports: [
         routes,

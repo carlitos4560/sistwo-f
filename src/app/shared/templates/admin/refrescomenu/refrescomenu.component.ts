@@ -4,6 +4,7 @@ import { DataSource } from '@angular/cdk/collections';
 
 import { Refresco } from '../../../models/refresco';
 import { RefrescoService } from '../../../services/refresco.service';
+import { BetweenService } from '../../../services/between.service';
 
 @Component({
     selector: 'refrescomenu',
@@ -12,6 +13,7 @@ import { RefrescoService } from '../../../services/refresco.service';
 })
 export class RefrescomenuComponent implements OnInit {
 
+    vistaEdit: any;
     dataSource = new RefrescoDataSource(this.refrescoService);
     displayedColumns = [
         'nombre',
@@ -21,13 +23,18 @@ export class RefrescomenuComponent implements OnInit {
         'opciones'
     ];
 
-    constructor(private refrescoService: RefrescoService) {}
+    constructor(
+        private refrescoService: RefrescoService,
+        private bs: BetweenService
+    ) {}
 
     ngOnInit() {
+        this.bs.currentVista.subscribe(vistaEdit => this.vistaEdit = vistaEdit);
     }
 
     editRefresco(id) {
         console.log(id);
+        this.bs.changeView(9);
     }
 
     destroyRefresco(id) {
