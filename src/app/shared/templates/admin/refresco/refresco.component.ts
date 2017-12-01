@@ -50,7 +50,7 @@ export class RefrescoComponent implements OnInit {
 
         this.tr.list().subscribe(
             (val) => {
-                console.log("DELETE GET successful value returned in body", val);
+                console.log("GET successful value returned in body", val);
                 this.tipos = val;
             },
             response => {

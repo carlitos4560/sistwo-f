@@ -71,7 +71,7 @@ export class PlatoComponent implements OnInit {
                 null,
                 Validators.compose([
                     Validators.required,
-                    Validators.pattern('1|2|4|8')
+                    Validators.pattern('[1|2|4|8]{1}')
                 ])
             ],
             descripcion: [

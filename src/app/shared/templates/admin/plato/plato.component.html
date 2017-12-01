@@ -1,9 +1,11 @@
 <form [formGroup]="form" novalidate (ngSubmit)="addPlato(form.value)">
-  <mat-form-field>
+  <mat-form-field hintLabel="Max 20 characters">
     <input matInput type="text"
            placeholder="Nombre"
+           #input maxlength="20"
            formControlName="nombre">
     <!--<mat-error *ngIf="!form.controls['nombre'].required">-->
+    <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
     <mat-error *ngIf="form.controls['nombre'].invalid">
       {{ getErrorNombre() }}
     </mat-error>
@@ -21,11 +23,12 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field hintLabel="Solo valores 1 o 2 o 4 o 8">
     <input matInput type="number"
            placeholder="Porcion"
            formControlName="porcion">
     <!--<mat-error *ngIf="!form.controls['porcion'].required">-->
+    <mat-hint align="end"></mat-hint>
     <mat-error *ngIf="form.controls['porcion'].invalid">
       {{ getErrorPorcion() }}
     </mat-error>

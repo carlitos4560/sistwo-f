@@ -12,6 +12,11 @@ import { RefrescoComponent } from '../templates/admin/refresco/refresco.componen
 import { RefrescomenuComponent } from '../templates/admin/refrescomenu/refrescomenu.component';
 import { CategoriasComponent } from '../templates/admin/categorias/categorias.component';
 import { TipoComponent } from '../templates/admin/tipo/tipo.component';
+import { EditPlatoComponent } from '../templates/admin/edit-plato/edit-plato.component';
+import { EditRefrescoComponent } from '../templates/admin/edit-refresco/edit-refresco.component';
+
+import { MenuPlatosComponent } from '../templates/cajero/menu-platos/menu-platos.component';
+import { MenuRefrescosComponent } from '../templates/cajero/menu-refrescos/menu-refrescos.component';
 
 @Component({
 selector: 'four',
@@ -33,7 +38,14 @@ export class FourComponent implements OnInit, OnDestroy, OnChanges {
         4: RefrescoComponent,
         5: RefrescomenuComponent,
         6: CategoriasComponent,
-        7: TipoComponent
+        7: TipoComponent,
+<<<<<<< Updated upstream
+        8: MenuPlatosComponent,
+        9: MenuRefrescosComponent
+=======
+        8: EditPlatoComponent,
+        9: EditRefrescoComponent
+>>>>>>> Stashed changes
     };
 
     private componentRef: ComponentRef<{}>;
