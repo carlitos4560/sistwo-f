@@ -1,6 +1,6 @@
-<div>
-  <mat-grid-list cols="3" rowHeight="100px">
-    <mat-grid-tile *ngFor="let plato of platos" >
+<div class="gridlist">
+  <mat-grid-list class="grid" cols="3" rowHeight="100px">
+    <mat-grid-tile [rowspan]="2" class="grid-item" *ngFor="let plato of platos" >
       <f-platocajero [plato]="plato"></f-platocajero>
     </mat-grid-tile>
   </mat-grid-list>
