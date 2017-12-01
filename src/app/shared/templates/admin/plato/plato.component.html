@@ -55,6 +55,7 @@
   </mat-form-field>
 
   <input type="file" id="imagen" (change)="onFileChange($event)" #fileInput>
+  <div *ngIf="form.controls['imagen'].invalid"> {{ getErrorImagen() }}</div>
   <button type="button" (click)="clearFile()">clear file</button>
 
   <button mat-raised-button

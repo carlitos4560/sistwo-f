@@ -7,6 +7,9 @@
         {{categoria.nombre}}
       </mat-option>
     </mat-select>
+    <mat-error *ngIf="form.controls['categoria_refresco_id'].invalid">
+      {{ getErrorCategoria() }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -17,6 +20,9 @@
         {{tipo.nombre}}
       </mat-option>
     </mat-select>
+    <mat-error *ngIf="form.controls['tipo_refresco_id'].invalid">
+      {{ getErrorTipo() }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -25,12 +31,18 @@
            formControlName="precio">
     <span matPrefix>$&nbsp;</span>
     <span matSuffix>.00</span>
+    <mat-error *ngIf="form.controls['precio'].invalid">
+      {{ getErrorPrecio() }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
     <input matInput type="number"
            placeholder="Cantidad Refrescos Unidades"
            formControlName="cantidad_unidades">
+    <mat-error *ngIf="form.controls['precio'].invalid">
+      {{ getErrorCantidad() }}
+    </mat-error>
   </mat-form-field>
 
   <button mat-raised-button

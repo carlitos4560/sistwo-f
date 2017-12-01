@@ -22,8 +22,22 @@ export class RefrescoComponent implements OnInit {
     form: FormGroup;
     categorias: Array<CategoriaRefresco>;
     tipos: Array<TipoRefresco>;
+    errors: any = {
+        'precio': {
+            'required': 'No debe estar vacio',
+            'pattern': 'Dato incompatible'
+        },
+        'cantidad': {
+            'required': 'No debe estar vacio',
+        },
+        'categoria': {
+            'required': 'Seleccione una opcion',
+        },
+        'tipo': {
+            'required': 'Seleccione una opcion',
+        },
+    };
 
-    errors: any = {};
     constructor(
         private fb: FormBuilder,
         private router: Router,
@@ -69,7 +83,8 @@ export class RefrescoComponent implements OnInit {
             precio: [
                 null,
                 Validators.compose([
-                    Validators.required
+                    Validators.required,
+                    Validators.pattern('[0-9]+')
                 ])
             ],
             cantidad_unidades: [
@@ -96,4 +111,37 @@ export class RefrescoComponent implements OnInit {
         );
     }
 
+    getErrorPrecio() {
+        return (
+            this.form.controls['precio'].hasError('required') ?
+            this.errors.precio.required :
+            this.form.controls['precio'].hasError('pattern') ?
+            this.errors.precio.pattern : 
+            ''
+        );
+    }
+
+    getErrorCantidad() {
+        return (
+            this.form.controls['cantidad_unidades'].hasError('required') ?
+            this.errors.precio.required :
+            ''
+        );
+    }
+
+    getErrorCategoria() {
+        return (
+            this.form.controls['categoria_refresco_id'].hasError('required') ?
+            this.errors.categoria.required :
+            ''
+        );
+    }
+
+    getErrorTipo() {
+        return (
+            this.form.controls['tipo_refresco_id'].hasError('required') ?
+            this.errors.tipo.required :
+            ''
+        );
+    }
 }

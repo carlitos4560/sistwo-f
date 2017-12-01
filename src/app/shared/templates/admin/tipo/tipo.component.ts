@@ -19,7 +19,15 @@ export class TipoComponent implements OnInit {
     displayedColumns = ['nombre', 'imagen', 'opciones'];
     form: FormGroup;
     @ViewChild('fileInput') fileInput: ElementRef;
-    errors: any = {};
+    errors: any = {
+        'nombre': {
+            'required': 'No debe estar vacio',
+            'pattern': 'Dato incompatible'
+        },
+        'imagen': {
+            'required': 'Imagen es requerida',
+        },
+    };
 
     constructor(
         private trService: TipoRefrescoService,
@@ -57,7 +65,9 @@ export class TipoComponent implements OnInit {
             nombre: [
                 null,
                 Validators.compose([
-                    Validators.required
+                    Validators.required,
+                    Validators.maxLength(20),
+                    Validators.pattern('[a-z-A-Z]+')
                 ])
             ],
             imagen: [
@@ -101,6 +111,24 @@ export class TipoComponent implements OnInit {
             () => {
                 console.log("The POST observable is now completed.");
             }
+        );
+    }
+
+    getErrorNombre() {
+        return (
+            this.form.controls['nombre'].hasError('required') ?
+            this.errors.nombre.required : 
+            this.form.controls['nombre'].hasError('pattern') ?
+            this.errors.nombre.pattern : 
+            ''
+        );
+    }
+
+    getErrorImagen() {
+        return (
+            this.form.controls['imagen'].hasError('required') ?
+            this.errors.imagen.required : 
+            ''
         );
     }
 

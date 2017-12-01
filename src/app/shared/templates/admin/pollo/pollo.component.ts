@@ -18,7 +18,8 @@ export class PolloComponent implements OnInit {
             'required': 'Este campo es requerido'
         },
         'fecha': {
-            'required': 'Este campo es requerido'
+            'required': 'Este campo es requerido',
+            'pattern': 'ERROR PATTERN'
         }
     };
 
@@ -35,8 +36,18 @@ export class PolloComponent implements OnInit {
 
     createForm() {
         this.form = this.fb.group({
-            cantidad_porciones: [null, Validators.compose([Validators.required])],
-            fecha: [null, Validators.compose([Validators.required])],
+            cantidad_porciones: [
+                null,
+                Validators.compose([
+                    Validators.required
+                ]
+            )],
+            fecha: [
+                null,
+                Validators.compose([
+                    Validators.required,
+                ]
+            )],
         });
     }
 
@@ -53,6 +64,7 @@ export class PolloComponent implements OnInit {
                 console.log("The POST observable is now completed.");
             }
         );
+        console.log(pollo);
     }
 
     getErrorCantidad() {

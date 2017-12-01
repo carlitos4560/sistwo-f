@@ -39,10 +39,8 @@ export class FourComponent implements OnInit, OnDestroy, OnChanges {
         5: RefrescomenuComponent,
         6: CategoriasComponent,
         7: TipoComponent,
-        8: MenuPlatosComponent,
-        9: MenuRefrescosComponent,
-        10: EditPlatoComponent,
-        11: EditRefrescoComponent
+        8: EditPlatoComponent,
+        9: EditRefrescoComponent
     };
 
     private componentRef: ComponentRef<{}>;

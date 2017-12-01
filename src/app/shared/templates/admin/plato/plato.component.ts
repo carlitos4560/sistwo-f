@@ -17,21 +17,25 @@ export class PlatoComponent implements OnInit {
     object: Plato;
     errors: any = {
         'nombre': {
-            'required': 'Este campo es requerido'
-            'pattern': 'Solamente caracteres'
+            'required': 'No debe estar vacio',
+            'pattern': 'Dato incompatible'
         },
         'precio': {
-            'required': 'Este campo es requerido'
+            'required': 'No debe estar vacio',
+            'pattern': 'Dato incompatible'
         },
         'porcion': {
-            'required': 'Este campo es requerido',
+            'required': 'No debe estar vacio',
             'pattern': 'Solo valores 1 o 2 o 4 o 8'
         },
         'descripcion': {
-            'required': 'Este campo es requerido',
+            'required': 'No debe estar vacio',
             'min': 'Minimo 15 caracteres',
             'max': 'Maximo 255 caracteres'
-        }
+        },
+        'imagen': {
+            'required': 'Imagen es requerido'
+        },
     };
 
     constructor(
@@ -68,8 +72,19 @@ export class PlatoComponent implements OnInit {
         this.form = this.fb.group({
             nombre: [
                 null,
-                Validators.compose([Validators.required])],
-            precio: [null, Validators.compose([Validators.required])],
+                Validators.compose([
+                    Validators.required,
+                    Validators.maxLength(20),
+                    Validators.pattern('[a-z-A-Z]+')
+                ]
+            )],
+            precio: [
+                null,
+                Validators.compose([
+                    Validators.required,
+                    Validators.pattern('[0-9]+')
+                ]
+            )],
             porcion: [
                 null,
                 Validators.compose([
@@ -81,7 +96,7 @@ export class PlatoComponent implements OnInit {
                 null,
                 Validators.compose([
                     Validators.required,
-                    Validators.minLength(25),
+                    Validators.minLength(15),
                     Validators.maxLength(255)
                 ])
             ],
@@ -108,6 +123,8 @@ export class PlatoComponent implements OnInit {
         return (
             this.form.controls['nombre'].hasError('required') ?
             this.errors.nombre.required : 
+            this.form.controls['nombre'].hasError('pattern') ?
+            this.errors.nombre.pattern : 
             ''
         );
     }
@@ -116,6 +133,8 @@ export class PlatoComponent implements OnInit {
         return (
             this.form.controls['precio'].hasError('required') ?
             this.errors.precio.required :
+            this.form.controls['precio'].hasError('pattern') ?
+            this.errors.precio.pattern : 
             ''
         );
     }
@@ -138,6 +157,14 @@ export class PlatoComponent implements OnInit {
             this.errors.descripcion.min :
             this.form.controls['descripcion'].hasError('maxLength') ?
             this.errors.descripcion.max :
+            ''
+        );
+    }
+
+    getErrorImagen() {
+        return (
+            this.form.controls['imagen'].hasError('required') ?
+            this.errors.imagen.required :
             ''
         );
     }

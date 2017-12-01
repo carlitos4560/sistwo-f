@@ -18,7 +18,15 @@ export class CategoriasComponent implements OnInit {
     dataSource = new CategoriaDataSource(this.crService);
     displayedColumns = ['nombre', 'contenido', 'opciones'];
     form: FormGroup;
-    errors: any = {};
+    errors: any = {
+        'nombre': {
+            'required': 'No debe estar vacio',
+            'pattern': 'Dato incompatible'
+        },
+        'contenido': {
+            'required': 'No debe estar vacio',
+        },
+    };
 
     constructor(
         private crService: CategoriaRefrescoService,
@@ -36,7 +44,9 @@ export class CategoriasComponent implements OnInit {
             nombre: [
                 null,
                 Validators.compose([
-                    Validators.required
+                    Validators.required,
+                    Validators.maxLength(20),
+                    Validators.pattern('[a-z-A-Z]+')
                 ])
             ],
             contenido: [
@@ -80,6 +90,24 @@ export class CategoriasComponent implements OnInit {
             () => {
                 console.log("The POST observable is now completed.");
             }
+        );
+    }
+
+    getErrorNombre() {
+        return (
+            this.form.controls['nombre'].hasError('required') ?
+            this.errors.nombre.required : 
+            this.form.controls['nombre'].hasError('pattern') ?
+            this.errors.nombre.pattern : 
+            ''
+        );
+    }
+
+    getErrorContenido() {
+        return (
+            this.form.controls['contenido'].hasError('required') ?
+            this.errors.contenido.required : 
+            ''
         );
     }
 

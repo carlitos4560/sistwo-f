@@ -30,16 +30,26 @@
 </div>
 
 <form [formGroup]="form" novalidate (ngSubmit)="addCategoria(form.value)">
-  <mat-form-field>
+  <mat-form-field hintLabel="Max 20 caracteres">
     <input matInput type="texto"
            placeholder="Nombre"
+           #input maxlength="20"
            formControlName="nombre">
+    <mat-hint align="end">{{input.value?.length || 0}}/20</mat-hint>
+    <mat-error *ngIf="form.controls['nombre'].invalid">
+      {{ getErrorNombre() }}
+    </mat-error>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field hintLabel="Max 5 caracteres">
     <input matInput type="text"
            placeholder="Contenido"
+           #input maxlength="5"
            formControlName="contenido">
+    <mat-hint align="end">{{input.value?.length || 0}}/5</mat-hint>
+    <mat-error *ngIf="form.controls['contenido'].invalid">
+      {{ getErrorContenido() }}
+    </mat-error>
   </mat-form-field>
 
   <button mat-raised-button
