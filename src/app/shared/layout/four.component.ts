@@ -19,9 +19,9 @@ import { MenuPlatosComponent } from '../templates/cajero/menu-platos/menu-platos
 import { MenuRefrescosComponent } from '../templates/cajero/menu-refrescos/menu-refrescos.component';
 
 @Component({
-selector: 'four',
-templateUrl: './four.component.html',
-styleUrls: ['./four.component.sass']
+    selector: 'four',
+    templateUrl: './four.component.html',
+    styleUrls: ['./four.component.sass']
 })
 export class FourComponent implements OnInit, OnDestroy, OnChanges {
     
@@ -39,13 +39,10 @@ export class FourComponent implements OnInit, OnDestroy, OnChanges {
         5: RefrescomenuComponent,
         6: CategoriasComponent,
         7: TipoComponent,
-<<<<<<< Updated upstream
         8: MenuPlatosComponent,
-        9: MenuRefrescosComponent
-=======
-        8: EditPlatoComponent,
-        9: EditRefrescoComponent
->>>>>>> Stashed changes
+        9: MenuRefrescosComponent,
+        10: EditPlatoComponent,
+        11: EditRefrescoComponent
     };
 
     private componentRef: ComponentRef<{}>;

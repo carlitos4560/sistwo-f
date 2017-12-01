@@ -12,6 +12,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -84,7 +85,7 @@ import { EditRefrescoComponent } from './shared/templates/admin/edit-refresco/ed
         ListPlatosComponent,
         PlatocajeroComponent,
         ListRefrescosComponent,
-        RefrescocajeroComponent
+        RefrescocajeroComponent,
         EditPlatoComponent,
         EditRefrescoComponent
     ],
@@ -97,7 +98,7 @@ import { EditRefrescoComponent } from './shared/templates/admin/edit-refresco/ed
         CategoriasComponent,
         TipoComponent,
         MenuPlatosComponent,
-        MenuRefrescosComponent
+        MenuRefrescosComponent,
         EditPlatoComponent,
         EditRefrescoComponent
     ],
@@ -114,7 +115,8 @@ import { EditRefrescoComponent } from './shared/templates/admin/edit-refresco/ed
         MatTableModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSelectModule
+        MatSelectModule,
+        MatGridListModule
     ],
     providers: [
         PlatoService,

@@ -18,6 +18,7 @@ export class PlatoComponent implements OnInit {
     errors: any = {
         'nombre': {
             'required': 'Este campo es requerido'
+            'pattern': 'Solamente caracteres'
         },
         'precio': {
             'required': 'Este campo es requerido'
@@ -28,7 +29,7 @@ export class PlatoComponent implements OnInit {
         },
         'descripcion': {
             'required': 'Este campo es requerido',
-            'min': 'Minimo 25 caracteres',
+            'min': 'Minimo 15 caracteres',
             'max': 'Maximo 255 caracteres'
         }
     };
@@ -65,7 +66,9 @@ export class PlatoComponent implements OnInit {
 
     createForm() {
         this.form = this.fb.group({
-            nombre: [null, Validators.compose([Validators.required])],
+            nombre: [
+                null,
+                Validators.compose([Validators.required])],
             precio: [null, Validators.compose([Validators.required])],
             porcion: [
                 null,
