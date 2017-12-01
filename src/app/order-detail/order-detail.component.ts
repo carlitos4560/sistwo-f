@@ -10,16 +10,18 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./order-detail.component.sass']
 })
 export class OrderDetailComponent implements OnInit {
-    private orderlines: OrderlineComponent[];
+    private orderlines: Detalle[];
     private total: number;
     private message: any;
     private subscription: Subscription;
     private observable: any;
+    private counterDetalle: number;
 
 
     constructor(private messageService: MessageService) { 
         this.orderlines = [];
         this.total = 0;
+        this.counterDetalle = 1;
         this.message = undefined;
         this.observable = this.messageService.getMessage();
         this.subscription = this.observable.subscribe( message => {
@@ -31,8 +33,33 @@ export class OrderDetailComponent implements OnInit {
                     this.agregarOrderline(message.message);
                     this.checkOrderlines(); 
                 }
+            } else if(this.message.component == "orderline-delete") {
+                console.log("eliminar");
+                console.log(this.message.value);
+                this.eliminarDetalle(this.message.value);
+            
             }
         });
+    }
+
+    public eliminarDetalle(id: number): void {
+        let encontrado = false;
+        let indice = 0;
+        let detalle: Detalle;
+        while(!encontrado){
+            detalle = this.orderlines[indice];
+            if(detalle.getDetailID() == id){
+                encontrado = true;
+            } else {
+                indice++; 
+            }
+        }
+        if(indice == 0){
+            this.orderlines.splice(indice,1);
+        } else {
+            this.orderlines.splice(indice,indice);
+        
+        }
     }
 
     public setOrderlineCollection(collection: any): void {
@@ -43,16 +70,10 @@ export class OrderDetailComponent implements OnInit {
     }
 
     public agregarOrderline(detalle: Detalle): void {
-        let desc = detalle.getDescripcion();
-        let cant = detalle.getCantidad();
-        let cost = detalle.getCosto();
-        console.log(desc);
-        console.log(cant);
-        console.log(cost);
-
-        let orderLineComponent = new OrderlineComponent();
-        orderLineComponent.initializeComponent(desc,cant,cost);
-        this.orderlines.push(orderLineComponent);
+        detalle.setDetailID(this.counterDetalle);
+        console.log(this.counterDetalle);
+        this.counterDetalle++;
+        this.orderlines.push(detalle);
     }
 
     public sendMessage(message: string): void {
@@ -67,6 +88,10 @@ export class OrderDetailComponent implements OnInit {
 
     public showMessage(): void {
         console.log(this.message);
+    }
+
+    public eliminarPedido(): void {
+        this.orderlines = [];
     }
 
   ngOnInit() {

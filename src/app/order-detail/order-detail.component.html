@@ -8,7 +8,9 @@
     <div class="order-detail">
       <ul class="orderlines">
         <li class="orderline" *ngFor="let orderline of orderlines" >
-          <f-orderline cant="{{orderline.getCantidad()}}" desc="{{orderline.getDescripcion()}}"></f-orderline>
+          <f-orderline cant="{{orderline.getCantidad()}}"
+                       desc="{{orderline.getDescripcion()}}"
+                       detailID="{{orderline.getDetailID()}}"></f-orderline>
         </li>
       </ul>
     </div>
@@ -27,7 +29,7 @@
         </div>
         <div class="col s2 m3">
           <div class="trash">
-            <img class="order-delete-button" src="/assets/static/images/trash.svg"/>
+            <img (click)="eliminarPedido()" class="order-delete-button" src="/assets/static/images/trash.svg"/>
           </div>
         </div>
       </div>

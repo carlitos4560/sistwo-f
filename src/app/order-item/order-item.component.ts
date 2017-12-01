@@ -27,7 +27,45 @@ export class OrderItemComponent implements OnInit {
                 console.log("Is my Object =D"); 
                 this.order = message.message;
             }
+
+            if(message.component == "orderline-delete" && message.id == this.num){
+                console.log("eliminar detalle"); 
+                this.eliminarDetalle(message.value);
+            }
+
+            if(message.component == "orderline-add" && message.id == this.num){
+                console.log("agregar detalle"); 
+                this.agregarDetalle(message.message);
+            }
         });
+    }
+
+    public agregarDetalle(detalle: Detalle): void {
+        let listaDetalle: Detalle[]  = this.order.getListaDetalle();
+        listaDetalle.push(detalle); 
+    }
+
+    public eliminarDetalle(id: number): void{
+        let listaDetalle: Detalle[]  = this.order.getListaDetalle();
+        let encontrado = false;
+        let indice = 0;
+        let detalle: Detalle;
+        while(!encontrado){
+            detalle = listaDetalle[indice];
+            if(detalle.getDetailID() == id){
+                encontrado = true;
+            } else {
+                indice++; 
+            }
+        }
+        if(indice == 0){
+            listaDetalle.splice(indice,1);
+        } else {
+            listaDetalle.splice(indice,indice);
+        
+        }
+
+    
     }
 
     public actualizarDetalleUI(listaDetalle: Detalle[]): void {
@@ -36,6 +74,7 @@ export class OrderItemComponent implements OnInit {
 
     public enviarDetallesUI(): void {
         let listaDetalle: Detalle[]  = this.order.getListaDetalle();
+        this.messageService.setCurrentOrderID(this.num);
         this.actualizarDetalleUI(listaDetalle); 
     }
 

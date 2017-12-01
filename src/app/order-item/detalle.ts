@@ -3,6 +3,7 @@ export class Detalle {
     private descripcion: string;
     private costo: number;
     private productID: number;
+    private detailID: number;
 
     constructor(desc: string, cant: number, precio: number){
         this.descripcion = desc;
@@ -40,6 +41,13 @@ export class Detalle {
 
     public setProductID(id: number): void {
         this.productID = id;
+    }
+
+    public setDetailID(id: number): void {
+        this.detailID = id;
+    }
+    public getDetailID(): number {
+        return this.detailID;
     }
 
 
